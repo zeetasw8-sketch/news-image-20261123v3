@@ -64,8 +64,7 @@ if (!image.subarray(0, PNG_SIGNATURE.length).equals(PNG_SIGNATURE)) {
 }
 // The PNG header (IHDR) carries the pixel dimensions at fixed offsets;
 // the entry must be exactly 1024x1024, so check that too.
-const width = image.readUInt32BE(16);
-const height = image.readUInt32BE(20);
+const width = image.readUInt32BE(16), height = image.readUInt32BE(20);
 if (width !== 1024 || height !== 1024) {
   throw new Error(`entry.png is ${width}x${height}, expected 1024x1024`);
 }
